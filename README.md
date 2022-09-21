@@ -34,7 +34,7 @@
             - session.py -- Init of database
             /excpetions
             - base.py -- Base excpetions for all services
-            - games.py -- Exceptions of games service
+            - post.py -- Exceptions of games service
             - server.py -- Exceptions of Server
             - user.py -- Exceptions of user service
             /middlewares
