@@ -59,6 +59,9 @@ async def like_post(post_id: int, db: Session = Depends(get_db), user=Depends(au
     "/post/unlike_post",
     tags=["post"],
     status_code=status.HTTP_200_OK,
+    responses={
+        404: {"model": Message},
+    },
 )
 async def unlike_post(post_id: int, db: Session = Depends(get_db), user=Depends(auth_handler.auth_wrapper)):
     res = await logic.get_by_id(id=post_id, session=db)

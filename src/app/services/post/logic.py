@@ -1,6 +1,6 @@
 import datetime
 
-from sqlalchemy import select,delete
+from sqlalchemy import select, delete
 from sqlalchemy import and_
 
 from app.services.post.models import Likes
@@ -39,11 +39,10 @@ class PostLogic(BaseRepo):
             )
         return likes_by_dates
 
-    async def get_like(self, db, post_id,user_id):
+    async def get_like(self, db, post_id, user_id):
         query = select(Likes).where(and_(Likes.user_id == user_id, Likes.post_id == post_id))
         r = await db.execute(query)
         return r.scalars().first()
-
 
     async def like_post(self, post_id, user_id, db):
 
@@ -56,4 +55,3 @@ class PostLogic(BaseRepo):
         query = delete(Likes).where(and_(Likes.user_id == user_id, Likes.post_id == post_id))
         await db.execute(query)
         await db.commit()
-

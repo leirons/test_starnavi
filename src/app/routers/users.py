@@ -88,6 +88,7 @@ async def get_user_by_username(
         raise HTTPException(status_code=UserDoesNotExists.error_code, detail=UserDoesNotExists.message)
     return res
 
+
 @router.patch(
     "/user/{username}",
     tags=["user"],
