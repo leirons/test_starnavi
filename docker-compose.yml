@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  redis:
+    image: redis:7.0.4
+    ports:
+    - "6379:6379"
+
+  db:
+    image: postgres:11
+    ports:
+      - "5433:5433"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=test_fastapi
+  web:
+    build:
+      context: ../test_project
+      dockerfile: docker/api/Dockerfile
+
+    command: bash -c "uvicorn app.server:app --host 0.0.0.0 --port 8000 --reload"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db/test_fastapi
+      - SECRET=SECRET
+      - REDIS_HOST=redis://6379
+    expose:
+      - "8000"

@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-server
+  labels:
+    name: fastapi-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi-post-store
+  template:
+    metadata:
+      labels:
+        app: fastapi-post-store
+    spec:
+      containers:
+        - name: fastapi-post-store
+          image:  grecigor21/petstore:latest
+          command: [ "sleep" ]
+          args: [ "infinity" ]
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: env-file
+              readOnly: true
+              mountPath: "/edvantis/.env"
+              subPath: .env
+      volumes:
+        - name: env-file
+          secret:
+            secretName: fastapi-server-credentials
