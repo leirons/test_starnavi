@@ -13,14 +13,14 @@
         - schemes.py -- Message Scheme for error log
         - server.py -- Init of FastAPI
             /routers
-            - pet.py - -- All routers of pet service
-            - games.py -- All routers of games service
+            - post.py - -- All routers of users service
+            - users.py -- All routers of users service
             /services
-                /pet
+                /user
                 - logic.py -- database logic 
                 - models.py  -- models of database
                 - schemes.py  -- pydantic schemes
-                /games
+                /post
                 - logic.py -- database logic 
                 - models.py  -- models of database
                 - schemes.py  -- pydantic schemes
@@ -34,7 +34,7 @@
             - session.py -- Init of database
             /excpetions
             - base.py -- Base excpetions for all services
-            - games.py -- Exceptions of games service
+            - post.py -- Exceptions of games service
             - server.py -- Exceptions of Server
             - user.py -- Exceptions of user service
             /middlewares
