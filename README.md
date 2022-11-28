@@ -5,7 +5,7 @@
 
 ### Structure
 ```
-    /docker 
+    /docker
         /api -- Storage with all different version of api
             DockerFile -- DockerFile with current version of api
     /src
@@ -17,11 +17,11 @@
             - users.py -- All routers of users service
             /services
                 /user
-                - logic.py -- database logic 
+                - logic.py -- database logic
                 - models.py  -- models of database
                 - schemes.py  -- pydantic schemes
                 /post
-                - logic.py -- database logic 
+                - logic.py -- database logic
                 - models.py  -- models of database
                 - schemes.py  -- pydantic schemes
         /core
@@ -38,7 +38,7 @@
             - server.py -- Exceptions of Server
             - user.py -- Exceptions of user service
             /middlewares
-            - authentication.py -- Authentication middleware for user, 
+            - authentication.py -- Authentication middleware for user,
             it takes request and check if user loged if True it returs pydantic scheme of user
             /repository
             - base.py -- Base CRUD for all services
@@ -51,8 +51,8 @@
             - env.py -- Settings of alembic
         /resources
         -  strings.py -- Messages for error
-     
-```     
+
+```
 
 ## How to run
 
@@ -60,7 +60,7 @@
 ```
 docker-compose up --build
 docker container ls
-docker exec (name of web service) alembic upgrade head  
+docker exec (name of web service) alembic upgrade head
 ```
 
 
@@ -86,7 +86,7 @@ REDIS_HOST=your
 
 ### Linux
 ```
-1 - python3 -m venv venv 
+1 - python3 -m venv venv
 2 - source venv/bin/activate
 3 - cd src
 4 - pip3 install requirements.txt

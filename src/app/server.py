@@ -64,6 +64,3 @@ def custom_openapi():
 
 app = create_app()
 app.openapi = custom_openapi
-
-
-
