@@ -70,5 +70,3 @@ class UserLogin(BaseModel):
 class UserPatch(UserCreateValidators):
     username: str = "string355"
     password: str = "string355"
-
-

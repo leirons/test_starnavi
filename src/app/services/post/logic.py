@@ -11,7 +11,6 @@ class PostLogic(BaseRepo):
     def __init__(self, model):
         super(PostLogic, self).__init__(model)
         self.likes = BaseRepo(Likes)
-        pass
 
     async def create_post(self, post: dict, db, user_id):
         post.update({"user_id": user_id})

@@ -87,6 +87,6 @@ class UserLogic(BaseRepo):
             query = update(self.model).where(self.model.username == username).values(**user.dict())
             await db.execute(query)
             await db.commit()
-        except Exception as exc:
+        except Exception:
             return False, ServerError
         return True, user
